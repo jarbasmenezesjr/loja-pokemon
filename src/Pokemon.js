@@ -1,4 +1,4 @@
-import React, {Component,useState} from "react";
+import React, {Component} from "react";
 
 import ReactDOM from 'react-dom';
 
@@ -6,19 +6,16 @@ import { Container,CardDeck,Card,Button,Row,Col,ListGroup,ListGroupItem,Image,Mo
 
 import './App.css';
 
-const URL = 'https://pokeapi.co/api/v2/';
-
 const URL_IMG = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
 class Pokemon extends Component{
     
     render(){    
         let pokemons = this.props.pokemons;
-
-        pokemons = JSON.parse(pokemons);
-        
         let listPokemons = [];
         let myCart = [];
+
+        pokemons = JSON.parse(pokemons);
 
         myCart = JSON.parse(localStorage.getItem("myCart"));
 
@@ -35,7 +32,7 @@ class Pokemon extends Component{
 
         myCart.map((pokemon) => {
           pokemon.price = listPokemons.filter((p) => {return p.name === pokemon.name})[0].price;
-        })
+        });
 
         function getPokemonInfo(name){
             let pokemon = localStorage.getItem(name);
